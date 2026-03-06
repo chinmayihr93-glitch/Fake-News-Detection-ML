@@ -29,6 +29,14 @@ python app/app.py
 4. Open browser
 http://127.0.0.1:5000/
 
+## Screenshots
+
+## Home Page
+![Home](screenshot.png)
+
+## Prediction Result
+![Prediction](screenshots_fake.png)
+
 ## Author
 Chinmayi H R  
 Aspiring Cloud Engineer | Information Science Student
