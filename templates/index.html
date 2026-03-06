@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fake News Detection System</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg,#1e3c72,#2a5298);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    width:600px;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0px 10px 30px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+h1{
+    color:#1e3c72;
+}
+
+textarea{
+    width:100%;
+    height:150px;
+    padding:10px;
+    border-radius:5px;
+    border:1px solid #ccc;
+    margin-top:20px;
+    font-size:14px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    background:#1e3c72;
+    color:white;
+    font-size:16px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2a5298;
+}
+
+.result{
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.real{
+    color:green;
+}
+
+.fake{
+    color:red;
+}
+
+.confidence{
+    margin-top:10px;
+    font-size:16px;
+    color:#555;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📰 Fake News Detection</h1>
+
+<p>Paste a news article below to check if it is real or fake.</p>
+
+<form action="/predict" method="post">
+
+<textarea name="news_text" placeholder="Paste the news article here..."></textarea>
+
+<br>
+
+<button type="submit">Check News</button>
+
+</form>
+
+{% if prediction_text %}
+
+<div class="result {% if 'Fake' in prediction_text %}fake{% else %}real{% endif %}">
+{{ prediction_text }}
+</div>
+
+<div class="confidence">
+{{ confidence }}
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
